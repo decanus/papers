@@ -1,0 +1,87 @@
+\documentclass[letterpaper, 11pt]{article}
+
+\usepackage{graphicx}
+%\usepackage{fullpage}
+\usepackage{pdfpages}
+\usepackage{color}
+\usepackage{framed}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[font=footnotesize,labelfont=bf]{caption}
+%full name for appendix
+%\usepackage[title]{appendix}
+\usepackage{float}
+%\usepackage{parskip}
+%for code
+\usepackage{listings}
+%for math
+\usepackage{amsmath}
+\usepackage{subfig}
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+%Pargraph line breaks
+%\setlength{\parskip}{1em}
+%\setlength{\parindent}{0pt} % Default is 15pt.
+
+\graphicspath{ {images/} }
+\linespread{1.1}
+\setlength{\emergencystretch}{3em}
+
+
+%opening
+\title{\LARGE Golyam: Private Information Retrieval on Kademlia-like DHTs}  
+\author{
+                Dean Eigenmann\\
+                \footnotesize\href{mailto:dean@eigenmann.me}
+                        {\nolinkurl{dean@eigenmann.me}}
+        \and
+                Matthew Di Ferrante\\
+                \footnotesize\href{mailto:me@mattdf.com}
+                        {\nolinkurl{me@mattdf.com}}
+}
+
+        \date{\today\\\small WORKING DRAFT }
+
+\input{macros}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% @TODO THIS SEEMS SHITTY
+We describe a set of changes made to Kademlia allowing it to become compatible with Private Information Retrieval protocols. The system allows for privacy preserving lookups using Kademlia DHTs assisted by various PIR protocols.
+\end{abstract}
+
+\tableofcontents
+
+\section{Background}
+\input{sections/background}
+
+\section{Motivation}
+\input{sections/motivation}
+
+\section{Introduction}
+\input{sections/intro}
+
+\section{System Details}
+\input{sections/details}
+
+\section{Future Work}
+\input{sections/improvements}
+
+\section{Conclusion}
+
+something something `a`
+
+%bibliography
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}

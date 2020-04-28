@@ -1,0 +1,15 @@
+Golyam makes no internal changes to Kademlia itself, it focuses on how information is retrieved itself. It does so by modifying the parameters for the Kademlia RPCs as well as adding a new command: \textsc{get\_value}.
+
+The distance function used in Golyam's RPC is a logarithmic distance\cite{discv5}, which creates $n$ intervals of $\sqrt{2^n}$-size each for node ID bitsizes of $n$:
+
+\[
+distance(n_1, n_2) = \log_2(n_1 \oplus n_2)
+\]
+
+We change the \textsc{find\_node} query to use a logarithmic distance instead of a node ID as it's parameter. The value of the logarithmic distance is the output of $distance(n, t)$ where $n$ is the node ID for the recipient of the RPC message, and $t$ is the node ID of the node to find. Upon receiving a query, a node will return all node IDs which are in the queried interval.
+
+In order to allow for private retrieval of a given value, we must also change the \textsc{find\_value} RPC. The \textsc{find\_value} RPC must return all value IDs in the interval that a node ID has received RPC \textsc{store} for. This allows a peer to query the list of IDs needed to construct a PIR query for a specific ID.
+
+In order to query for a specific ID we introduce the \textsc{get\_value} RPC. This allows a peer to retrieve a specific value. The parameters of this query include the query interval along with a PIR query retrieving the specific ID.
+
+% @TODO: Since we do queries that look like this `<DISTANCE> <PIR>`, we should note that the distance part is not part of the PIR itself. So peers leak what distance they are interested in. This would be good for further improvements.
